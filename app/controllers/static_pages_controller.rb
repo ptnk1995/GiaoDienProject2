@@ -1,7 +1,7 @@
 class StaticPagesController < ApplicationController
-  def index
+  before_action :load_categories
+  def home
+    @books = Book.hottest
   end
 
-  def contact
-  end
 end

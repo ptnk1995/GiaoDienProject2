@@ -1,0 +1,111 @@
+<div class="body_wrapper container body-wrapper-content">
+  <div class="flash">
+  </div>
+
+  <div id="user-course-show" class="row">
+    <div class="col-md-9">
+      <div class="breadcrumb-bar">
+        <ul class="breadcrumb">
+          <li>
+            <a href="http://education.framgia.vn/en">
+              <i class="glyphicon glyphicon-th-list"></i>
+              Paths
+            </a>
+          </li>
+          <li>
+            <a href="/en/courses">All Courses</a>
+          </li>
+          <li class="active">[DN][OpenEdu]  Patch 1</li>
+        </ul>
+      </div>
+      <span class="header-title">[DN][OpenEdu]  Patch 1</span>
+      <span class="label-status progress-background-color">
+        Progress
+      </span>
+      <div class="description"></div>
+      <div class="subject-list">
+        <div class="col-xs-1">
+          <a title="Finish" href="/en/user_courses/112/subjects/4">
+            <div class="node finish-background-color"></div>
+          </a>
+        </div>
+        <a href="/books/1">
+          <div class="subject col-xs-11 row">
+            <div class="col-xs-2 subject-image">
+              <%= image_tag "github.png", class: "img-circle imglstcourse" %>
+            </div>
+            <div class="col-xs-10 infor">
+              <div>
+                <span class="subject-name">
+                  Git Tutorial
+                </span>&nbsp;
+                <span>
+                  <i>2 days
+                  </i>
+                </span>
+              </div>
+              <div>Start date: 2016-10-03</div>
+              <div>Start Git for your project today.</div>
+            </div>
+          </div>
+        </a>
+        <div class="col-xs-1">
+          <a title="Finish" href="/en/user_courses/112/subjects/2">
+            <div class="node node--connected
+            finish-background-color"></div>
+          </a>
+        </div>
+        <a href="/en/user_courses/112/subjects/2">
+          <div class="subject col-xs-11 row">
+            <div class="col-xs-2 subject-image">
+              <%= image_tag "rails1.png", class: "img-circle imglstcourse" %>
+            </div>
+            <div class="col-xs-10 infor">
+              <div>
+                <span class="subject-name">
+                  Ruby's Project 1
+                </span>&nbsp;
+                <span>
+                  <i>10 days
+                  </i>
+                </span>
+              </div>
+              <div>
+                Start date: 2016-10-07
+              </div>
+              <div>Start Project 1 for Ruby on Rails today.
+              </div>
+            </div>
+          </div>
+        </a>
+      <div class="col-xs-1">
+        <a title="Progress" href="/en/user_courses/112/subjects/3">
+          <div class="node node--connected
+          progress-background-color"></div>
+        </a>
+      </div>
+      <a href="/en/user_courses/112/subjects/3">
+        <div class="subject col-xs-11 row">
+          <div class="col-xs-2 subject-image">
+            <%= image_tag "rails1.png", class: "img-circle imglstcourse" %>
+          </div>
+          <div class="col-xs-10 infor">
+            <div>
+              <span class="subject-name">
+                Ruby's Project 2
+              </span>&nbsp;
+              <span>
+                <i>7 days</i>
+              </span>
+            </div>
+            <div>Start date: 2016-10-31</div>
+            <div>Start Project 2 for Ruby on Rails today.
+            </div>
+          </div>
+        </div>
+      </a>
+    </div>
+  </div>
+
+  <%= render "layouts/right" %>
+</div>

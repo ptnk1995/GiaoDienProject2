@@ -1,6 +1,0 @@
-<%= form_for [:admin, @category] do |f| %>
-  <h2><%= t "category_admin.category" %></h2>
-  <%= f.text_field :name,
-    placeholder: t("form.name"), class: "name" %>
-  <%= f.submit t("category_admin.save"), class: "btn send" %>
-<% end %>

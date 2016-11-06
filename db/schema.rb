@@ -10,35 +10,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161023173731) do
+ActiveRecord::Schema.define(version: 20160929090812) do
 
-  create_table "activities", force: :cascade do |t|
-    t.integer  "action_type"
-    t.integer  "target_type"
-    t.integer  "target_id"
-    t.integer  "user_id"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
-    t.index ["user_id"], name: "index_activities_on_user_id"
-  end
-
-  create_table "answer_chooses", force: :cascade do |t|
-    t.boolean  "is_correct"
-    t.integer  "question_exam_id"
-    t.integer  "answer_id"
-    t.datetime "created_at",       null: false
-    t.datetime "updated_at",       null: false
-    t.index ["answer_id"], name: "index_answer_chooses_on_answer_id"
-    t.index ["question_exam_id"], name: "index_answer_chooses_on_question_exam_id"
-  end
-
-  create_table "answers", force: :cascade do |t|
-    t.string   "content"
-    t.boolean  "is_correct"
-    t.integer  "question_id"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
-    t.index ["question_id"], name: "index_answers_on_question_id"
+  create_table "books", force: :cascade do |t|
+    t.string   "name"
+    t.text     "description"
+    t.string   "image"
+    t.date     "publish_date"
+    t.string   "author"
+    t.string   "url"
+    t.integer  "page"
+    t.float    "rating",       default: 0.0
+    t.integer  "category_id"
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
+    t.index ["category_id"], name: "index_books_on_category_id"
   end
 
   create_table "categories", force: :cascade do |t|
@@ -47,44 +33,45 @@ ActiveRecord::Schema.define(version: 20161023173731) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "contacts", force: :cascade do |t|
-    t.string   "name"
-    t.string   "email"
-    t.string   "phone"
-    t.text     "message"
+  create_table "comments", force: :cascade do |t|
+    t.text     "content"
+    t.integer  "user_id"
+    t.integer  "review_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["review_id"], name: "index_comments_on_review_id"
+    t.index ["user_id"], name: "index_comments_on_user_id"
   end
 
-  create_table "exams", force: :cascade do |t|
-    t.integer  "status"
-    t.integer  "mark"
+  create_table "likes", force: :cascade do |t|
+    t.boolean  "like"
     t.integer  "user_id"
-    t.integer  "category_id"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
-    t.index ["category_id"], name: "index_exams_on_category_id"
-    t.index ["user_id", "created_at"], name: "index_exams_on_user_id_and_created_at"
-    t.index ["user_id"], name: "index_exams_on_user_id"
+    t.integer  "review_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["review_id"], name: "index_likes_on_review_id"
+    t.index ["user_id"], name: "index_likes_on_user_id"
   end
 
-  create_table "question_exams", force: :cascade do |t|
-    t.boolean  "is_correct"
-    t.integer  "question_id"
-    t.integer  "exam_id"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
-    t.index ["exam_id"], name: "index_question_exams_on_exam_id"
-    t.index ["question_id"], name: "index_question_exams_on_question_id"
+  create_table "rates", force: :cascade do |t|
+    t.integer  "rate"
+    t.integer  "user_id"
+    t.integer  "book_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["book_id"], name: "index_rates_on_book_id"
+    t.index ["user_id"], name: "index_rates_on_user_id"
   end
 
-  create_table "questions", force: :cascade do |t|
-    t.text     "content"
-    t.integer  "pattern"
-    t.integer  "category_id"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
-    t.index ["category_id"], name: "index_questions_on_category_id"
+  create_table "reading_books", force: :cascade do |t|
+    t.boolean  "reading"
+    t.boolean  "favorite"
+    t.integer  "user_id"
+    t.integer  "book_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["book_id"], name: "index_reading_books_on_book_id"
+    t.index ["user_id"], name: "index_reading_books_on_user_id"
   end
 
   create_table "relationships", force: :cascade do |t|
@@ -92,42 +79,37 @@ ActiveRecord::Schema.define(version: 20161023173731) do
     t.integer  "followed_id"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
-    t.index ["followed_id"], name: "index_relationships_on_followed_id"
-    t.index ["follower_id", "followed_id"], name: "index_relationships_on_follower_id_and_followed_id", unique: true
-    t.index ["follower_id"], name: "index_relationships_on_follower_id"
   end
 
-  create_table "suggest_answers", force: :cascade do |t|
-    t.text     "content"
-    t.boolean  "is_correct"
-    t.integer  "suggest_question_id"
-    t.datetime "created_at",          null: false
-    t.datetime "updated_at",          null: false
-    t.index ["suggest_question_id"], name: "index_suggest_answers_on_suggest_question_id"
-  end
-
-  create_table "suggest_questions", force: :cascade do |t|
-    t.text     "content"
+  create_table "requests", force: :cascade do |t|
+    t.string   "namebook"
     t.boolean  "status"
-    t.integer  "pattern"
     t.integer  "user_id"
-    t.integer  "category_id"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
-    t.index ["category_id"], name: "index_suggest_questions_on_category_id"
-    t.index ["user_id", "created_at"], name: "index_suggest_questions_on_user_id_and_created_at"
-    t.index ["user_id"], name: "index_suggest_questions_on_user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_requests_on_user_id"
+  end
+
+  create_table "reviews", force: :cascade do |t|
+    t.string   "title"
+    t.text     "content"
+    t.integer  "user_id"
+    t.integer  "book_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["book_id"], name: "index_reviews_on_book_id"
+    t.index ["user_id"], name: "index_reviews_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
     t.string   "name"
-    t.string   "email"
-    t.string   "avatar"
-    t.integer  "role",            default: 0
-    t.datetime "created_at",                  null: false
-    t.datetime "updated_at",                  null: false
     t.string   "password_digest"
-    t.index ["email"], name: "index_users_on_email", unique: true
+    t.string   "remember_digest"
+    t.string   "email"
+    t.string   "image",           default: "avatar.jpg"
+    t.integer  "role",            default: 2
+    t.datetime "created_at",                             null: false
+    t.datetime "updated_at",                             null: false
   end
 
 end

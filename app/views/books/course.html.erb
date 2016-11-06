@@ -1,0 +1,40 @@
+<div class="body_wrapper container body-wrapper-content">
+  <div id="user-course-index">
+    <div class="breadcrumb-bar">
+      <ul class="list breadcrumb">
+        <li>
+          <%= link_to root_path do %>
+            <i class="glyphicon glyphicon-th-list"> <%= t("Paths") %></i>
+          <% end %>
+        </li>
+          <li class="active">All Courses</li>
+        </ul>
+      </div>
+      <div class="row">
+        <div class="col-md-6">
+          <div class="card">
+            <a href="/en/user_courses/112">
+              <div class="bucket">
+                <div class="bucket-media">
+                  <div class="badge">
+                    <%= image_tag "rails1.png", class: "img-circle imglstcourse" %>
+                  </div>
+                </div>
+                <div class="bucket-content">
+                  <span class="course-name">
+                    [DN][OpenEdu]  Pa...
+                  </span>
+                  <span class="label-status
+                  progress-background-color">
+                  Progress
+                </span>
+                <p class="course-description">
+                </p>
+              </div>
+            </div>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

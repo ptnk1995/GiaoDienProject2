@@ -1,19 +1,53 @@
-<div id="footer">
-  <div>
-    <p><%= t "footer.designby" %></p>
-    <ul>
-      <li>
-        <%= link_to t("footer.twitter"), "http://freewebsitetemplates.com/go/twitter/", id: "twitter" %>
-      </li>
-      <li>
-        <%= link_to t("footer.facebook"), "http://freewebsitetemplates.com/go/facebook/", id: "facebook" %>
-      </li>
-      <li>
-        <%= link_to t("footer.googleplus"), "http://freewebsitetemplates.com/go/googleplus/", id: "googleplus" %>
-      </li>
-      <li>
-        <%= link_to t("footer.pinterest"), "http://pinterest.com/fwtemplates/", id: "pinterest"%>
-      </li>
-    </ul>
+<footer class="footer-distributed">
+  <div class="footer-left">
+    <h3><span>FramgiaVietNam</span></h3>
+    <p class="footer-links">
+      <%= link_to t("Home |"), "#" %>
+      <%= link_to t("Blog |"), "#" %>
+      <%= link_to t("About |"), "#" %>
+      <%= link_to t("Faq |"), "#" %>
+      <%= link_to t("Contact |"), "#" %>
+    </p>
+    <p class="footer-company-name">Copyright 2016 Framgia, Inc. All rights reserved.</p>
   </div>
-</div>
+  <div class="footer-center">
+    <div class="footer-icon">
+      <span>
+        <i class="fa fa-map-marker"></i>
+      </span>
+      <p>
+        <span>
+          13F Keangnam Landmark 72 Tower, Plot E6, Pham Hung Road, Nam Tu Liem, Ha Noi, Viet Nam
+        </span>
+      </p>
+    </div>
+    <div>
+      <i class="fa fa-phone"></i>
+      <p>84-4-3795-5417</p>
+    </div>
+    <div>
+      <i class="fa fa-envelope"></i>
+      <p><a href="mailto:hr_team@framgia.com">hr_team@framgia.com</a></p>
+    </div>
+  </div>
+  <div class="footer-right">
+    <p class="footer-company-about">
+      <span>About Framgia Viet Nam</span>
+      Framgia Vietnam is a company 100% Japan funded specializing in design, development applications such as mobile phone software, games, social and website applications.
+    </p>
+    <div class="footer-icons">
+      <%= link_to "https://www.facebook.com/FramgiaVietnam", target: "_blank" do %>
+        <i class="fa fa-facebook"></i>
+      <% end %>
+      <%= link_to "#", target: "_blank" do %>
+        <i class="fa fa-twitter"></i>
+      <% end %>
+      <%= link_to "https://github.com/framgia/", target: "_blank" do %>
+        <i class="fa fa-github"></i>
+      <% end %>
+      <%= link_to "https://www.linkedin.com/company/3341218?trk=tyah&amp;trkInfo=clickedVertical%3Acompany%2CclickedEntityId%3A3341218%2Cidx%3A2-1-2%2CtarId%3A1465497556522%2Ctas%3Aframgia%20vietnam", target: "_blank" do %>
+        <i class="fa fa-linkedin"></i>
+      <% end %>
+    </div>
+  </div>
+</footer>

@@ -1,9 +1,52 @@
-<div id="body">
-  <h2><%= t "header.login" %></h2>
-  <%= form_for :session, url: login_path do |f| %>
-    <%= f.email_field :email, placeholder: t("form.email") %>
-    <%= f.password_field :password, placeholder: t("form.password") %>
-    <%= f.submit t("header.login"), class: "btn send" %>
-  <% end %>
-  <span><%= link_to t("index.signup"), signup_path %></span>
-</div>
+<html lang="en">
+  <head>
+    <title><%= t "index" %></title><meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <%= stylesheet_link_tag "application", media: "all",
+      "data-turbolinks-track": true %>
+    <%= javascript_include_tag "application",
+      "data-turbolinks-track": true %>
+    <%= csrf_meta_tags %>
+  </head>
+  <body>
+    <%= render "layouts/header" %>
+    <div class="body_wrapper body_home framgia">
+      <div class="flash">
+        <div class="alert alert-warning fade in hide-flash" style="display: none;">
+          <a class="close" data-dismiss="alert" href="#" aria-hidden="true">×</a>
+          Invalid Email or password.
+        </div>
+      </div>
+      <section id="login">
+        <div class="row">
+          <div class="col-xs-12">
+            <div class="form-wrap">
+              <h1>Please Login</h1>
+              <%= form_for :session, url: login_path,
+              html: {class: "form-signin"} do |f| %>
+              <div class="form-group">
+                <%= f.email_field :email, class: "form-control", id: "user_email", placeholder: "Email" %>
+              </div>
+              <div class="form-group">
+                <%= f.password_field :password, class: "form-control", id: "user_password", placeholder: "Password" %>
+              </div>
+              <div class="checkbox">
+                <span>
+                  <%= f.label :remember_me, class: "pull-left" do %>
+                  <%= f.check_box :remember_me, class: "icheck pull-left" %>
+                  <span><%= t "remember_me" %></span>
+                  <% end %>
+                </span>
+
+                <span class="pull-right">
+                  <%= link_to t("forgot_password"), "#" %>
+                </span>
+              </div>
+              <%= f.submit "Login", class: "btn btn-custom btn-lg btn-block" %>
+              <% end %>
+            </div>
+          </div>
+      </section>
+    </div>
+  </body>
+</html>

@@ -1,19 +1,16 @@
 Rails.application.routes.draw do
 
-  root "static_pages#index"
-  get "contact", to: "static_pages#contact"
-  get "signup", to: "users#new"
-  get "login", to: "sessions#new"
-  post "login", to: "sessions#create"
-  delete "logout", to: "sessions#destroy"
-  resources :users, expect: :destroy
-  resources :suggest_questions
-  resources :exams
-  namespace :admin do
-    root "home#index", as: "root"
-    resources :categories
-    resources :questions
-    resources :answers
-    resources :users
+  root "static_pages#home"
+  resources :books, :users
+  get "/login", to: "sessions#new"
+  post "/login", to: "sessions#create"
+  delete "/logout", to: "sessions#destroy"
+  get "/signup", to: "users#new"
+  post "/signup", to: "users#create"
+  resources :books, only: [:index, :show] do
+    resources :reviews do
+      resources :comments
+    end
+    resources :rates, except: [:destroy]
   end
 end

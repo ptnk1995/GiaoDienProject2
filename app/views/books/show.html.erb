@@ -1,0 +1,112 @@
+<div class="body_wrapper container body-wrapper-content">
+  <div class="flash">
+  </div>
+  <div id="subject-show">
+    <div class="row">
+      <div class="col-md-9">
+        <div class="breadcrumb-bar">
+          <ul class="list breadcrumb">
+            <li>
+              <a href="http://education.framgia.vn/en">
+                <i class="glyphicon glyphicon-th-list"></i>
+                Paths
+              </a>
+            </li>
+            <li><a href="/en/courses">All Courses</a></li>
+            <li><a href="/en/user_courses/112">[DN][OpenEdu]  Patch 1</a></li>
+            <li class="active">Git Tutorial</li>
+          </ul>
+        </div>
+        <div class="subject-overview">
+          <span class="header-title">
+            Git Tutorial
+          </span>
+          <span class="label-status finish-background-color">
+            Finish
+          </span>
+          <a data-confirm="Are you sure" class="btn-finish pull-right" rel="nofollow" data-method="put" href="/en/user_subjects/653">Finish</a>
+          <div class="description">
+            Start Git for your project today.
+          </div>
+          <div class="subject-content box-divider">
+            <div class="label-title">Content</div>
+            <p>Get an introduction to github, code version management</p>
+          </div>
+        </div>
+        <div class="render-task">
+          <div class="user-task">
+            <div class="overview">
+              Task Overview
+              <a data-toggle="modal" data-target="#TaskModal" class="pull-right btn-new-task" href="#">
+                <span class="glyphicon glyphicon-plus"></span>
+                New task
+              </a>          </div>
+
+              <div class="note-list user-task-list">
+                <div class="note row" id="user-task-row-4507">
+                  <div class="col-md-1 td-image col-xs-1" title="Finished">
+                    <%= image_tag "finished.png", class: "finished", alt: "finished" %>
+                  </div>
+                  <div class="col-md-8 col-xs-8">
+                    <div class="task-name">
+                      Requirement understanding
+                    </div>
+                    <div class="task-description" title="Get an introduction to project understanding">
+                      Get an introduction to project understanding
+                    </div>
+                  </div>
+                </div>
+
+                <div class="note row" id="user-task-row-4508">
+                  <div class="col-md-1 td-image col-xs-1" title="Finished">
+                    <%= image_tag "in-progress.png", class: "finished", alt: "progress" %>
+                  </div>
+                  <div class="col-md-8 col-xs-8">
+                    <div class="task-name">
+                      Design Database
+                    </div>
+                    <div class="task-description" title="Start design database">
+                      Start design database
+                    </div>
+                  </div>
+                  <div class="col-md-3 col-xs-3">
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <%= render "layouts/right" %>
+        <div id="TaskModal" class="modal fade" role="dialog">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">×</button>
+                <h3 class="label-modal">New task</h3>
+              </div>
+              <div class="modal-body">
+                <form class="new_task" id="new_task" action="/en/tasks" accept-charset="UTF-8" method="post"><input name="utf8" value="✓" type="hidden"><input name="authenticity_token" value="dZQ8g3Zizj8qQpEIgZjZPg3Zm4hiTUZEm+XYVhbs+p5TYLw2/nVXQzMknt3aXVxAEIYkakRacl813mV/SYt0cA==" type="hidden">
+                  <input value="180" name="task[course_subject_id]" id="task_course_subject_id" type="hidden">
+                  <div class="form-group">
+                    <input class="form-control" required="required" placeholder="Enter task name..." name="task[name]" id="task_name" type="text">
+                  </div>
+                  <div class="form-group">
+                    <textarea class="form-control modal-text-area" placeholder="Enter task description..." name="task[description]" id="task_description"></textarea>
+                  </div>
+
+
+                  <input value="68" name="task[user_tasks_attributes][0][user_id]" id="task_user_tasks_attributes_0_user_id" type="hidden">
+                  <input value="653" name="task[user_tasks_attributes][0][user_subject_id]" id="task_user_tasks_attributes_0_user_subject_id" type="hidden">
+
+                  <div class="form-group">
+                    <input name="commit" value="Create" class="btn-action" data-disable-with="Create" type="submit">
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>

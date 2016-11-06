@@ -1,13 +1,17 @@
 class Category < ApplicationRecord
-  has_many :exams, dependent: :destroy
-  has_many :questions, dependent: :destroy
-  has_many :suggest_questions, dependent: :destroy
+  scope :newest, ->{order created_at: :desc}
 
-  validates :name, presence: true, length: {minimum: 5}
+  validates :name, presence: true, length: {maximum: 50}, uniqueness: true
 
-  scope :recent, ->{order name: :asc}
+  has_many :books, dependent: :destroy
 
-  def random_question
-    self.questions.random
+  class << self
+    def search search
+      if search
+        where "name LIKE ?", "%#{search}%"
+      else
+        newest
+      end
+    end
   end
 end

@@ -1,29 +1,92 @@
-<div id="header">
-  <%= image_tag "logo.png", alt: t("alt"), class:"logo" %>
-  <ul id="navigation">
-    <li><%= link_to t("header.home"), root_path %></li>
-    <% if logged_in? %>
-      <li><%= link_to t("header.lesson"), "#" %></li>
-      <li><%= link_to t("header.contributes_question"), suggest_questions_path %></li>
-      <li><%= link_to t("header.activities"), "#" %></li>
-      <li><%= link_to t("header.users"), users_path %></li>
-      <li class="dropdown">
-        <a href="#" class="dropdown" data-toggle="dropdown">
-          <%= t("header.account") %><b class="caret"></b>
-        </a>
-        <ul class="dropdown-menu">
-          <li><%= link_to t("header.profile"), current_user %></li>
-          <li><%= link_to t("header.setting"), edit_user_path(current_user) %></li>
-          <hr />
-          <li>
-            <%= link_to t("header.logout"), logout_path, method: :delete %>
+<nav class="navbar navbar-default navbar-fixed-top">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <%= link_to root_path do %>
+        <%= image_tag "logo.png", class: "logo" %>
+      <% end %>
+    </div>
+    <div class="collapse navbar-collapse navbar-custom"
+      id="bs-example-navbar-collapse-1">
+
+
+        <% if logged_in? %>
+          <ul class="nav navbar-nav navbar-right">
+         <li class="dropdown">
+          <%= link_to root_path do %>
+            <i class="fa fa-graduation-cap" aria-hidden="true"> <%= t("Courses") %></i>
+          <% end %>
+        </li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown"
+            role="button" aria-haspopup="true" aria-expanded="false">
+            <i class="fa fa-bell-o" aria-hidden="true"></i>
+          </a>
+
+          <ul class="dropdown-menu">
+              <li class="header">New notifications</li>
+              <div class="scroll">
+                <li>
+                  <%= link_to books_path(category: 1) do %>
+                    <%= image_tag "logo.png", class: "imgcourse" %>
+                    abc
+                  <% end %>
+                  <p style="margin-left: 62px; color: gray; font-size: 12px;">26/09/2016</p>
+                </li>
+                <li role="separator" class="divider"></li>
+              </div>
+              <li><%= link_to t("view_all"), root_path %></li>
+          </ul>
+        </li>
+          <li class="user-name">Nguyen Phuoc Tien</li>
+          <li class="dropdown avatar-dropdown">
+
+            <%= image_tag "admin/avatar3.png", class: "img-circle avatar",
+              data: {toggle: "dropdown"},
+              aria: {haspopup: "true", expanded: "true"} %>
+            <!-- <ul class="dropdown-menu user-dropdown">
+              <li><%= link_to t("account_profile"), current_user %></li>
+              <% if verify_user_access? %>
+                <li><%= link_to t("admin_section"), root_path %></li>
+              <% end %>
+              <li role="separator" class="divider"></li>
+              <li>
+                <%= link_to t("account_logout"), logout_path, method: :delete %>
+              </li>
+            </ul> -->
+            <ul class="dropdown-menu box_profile">
+                <li class="user-header">
+
+                  <%= image_tag "logo.png", class: "img-circle img_profile" %>
+                  <p class="name_box_profile">Nguyen Phuoc Tien</p>
+                  <div class="col-xs-4 col-xs-offset-4">
+                    <div class="switch-role">
+                      <button class="btn btn-warning">
+                        Trainee
+                        <span class="caret"></span>
+                      </button>
+                      <ul class="drop" hidden="">
+                        <li><a class="btn btn-default btn-flat trainee" href="/">Trainee</a></li>
+                      </ul>
+                    </div>
+                  </div>
+                </li>
+                <li class="user-footer">
+                  <div class="col-xs-4 pull-left">
+                    <%= link_to t("account_profile"), current_user, class: "btn btn-default btn-flat" %>
+                  </div>
+                  <div class="col-xs-4 pull-right">
+                    <%= link_to t("account_logout"), logout_path, method: :delete, class: "btn btn-default btn-flat" %>
+                  </div>
+                </li>
+              </ul>
           </li>
-        </ul>
-      </li>
-    <% else %>
-    <li><%= link_to t("header.contact"), contact_path %></li>
-    <li><%= link_to t("header.signup"), signup_path %></li>
-    <li><%= link_to t("header.login"), login_path %></li>
-  <% end %>
-  </ul>
-</div>
+        <% else %>
+          <ul class="nav navbar-nav navbar-right">
+
+              <li><%= link_to t("signin_button"), login_path %></li>
+          </ul>
+        <% end %>
+      </ul>
+    </div>
+  </div>
+</nav>

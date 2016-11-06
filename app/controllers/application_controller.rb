@@ -1,22 +1,16 @@
 class ApplicationController < ActionController::Base
-  protect_from_forgery with: :exception
+  layout 'application'
   include SessionsHelper
+  protect_from_forgery with: :exception
 
   def logged_in_user
     unless logged_in?
-      store_location
-      flash[:warning] = t "new_user.warning"
+      flash[:danger] = t "require_login"
       redirect_to login_url
     end
   end
 
-  def correct_user
-    redirect_to root_url unless current_user.is_user? @user
-  end
-
-  def verify_admin
-    unless logged_in? && current_user.admin?
-      redirect_to root_path
-    end
+  def load_categories
+    @categories = Category.all
   end
 end
